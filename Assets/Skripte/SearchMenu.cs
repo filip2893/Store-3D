@@ -9,6 +9,7 @@ public class SearchMenu : MonoBehaviour {
 	public InputField input;
 
 	private static GameObject [] entities;
+
 	// Use this for initialization
 	void Start () {
 		entities = GameObject.FindGameObjectsWithTag("entity");
@@ -40,19 +41,19 @@ public class SearchMenu : MonoBehaviour {
 		bool show = false;
 		if (dropdown.value == 0) {
 			foreach (GameObject en in entities) {
-				show = comparator (en.GetComponent<Entity> ().sifra, input.text.ToString ());
+				show = compare (en.GetComponent<Entity> ().sifra, input.text.ToString ());
 				en.SetActive (show);
 			}
 		}else if(dropdown.value == 1){
 			foreach (GameObject en in entities) {
-				show = comparator (en.GetComponent<Entity> ().name, input.text.ToString ());
+				show = compare (en.GetComponent<Entity> ().name, input.text.ToString ());
 				en.SetActive (show);
 			}					
 		}
 		this.gameObject.SetActive (false);
 	}
 
-	private bool comparator(string val1, string val2){
+	private bool compare(string val1, string val2){
 		if (val1 == val2) {
 			return true;
 		} else {
